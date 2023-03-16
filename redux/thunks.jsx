@@ -1,8 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-export const fetchToken = createAsyncThunk('auth/fetchToken', async () => {
+const serverUri = "http://1909-38-140-1-58.ngrok.io"
+
+export const fetchToken = createAsyncThunk(`${serverUri}/auth/token`, async () => {
   try {
-    const response = await fetch('/auth/token');
+    const response = await fetch(`${serverUri}/auth/token`);
     const data = await response.json();
     const { accessToken } = data;
     console.log('HERE');
@@ -14,12 +16,12 @@ export const fetchToken = createAsyncThunk('auth/fetchToken', async () => {
 });
 
 export const fetchUserData = createAsyncThunk(
-  'api/user',
+  `${serverUri}/api/user`,
   async (_, { dispatch }) => {
     //First get the token...
     dispatch(fetchToken());
     try {
-      const response = await fetch('/api/user');
+      const response = await fetch(`${serverUri}/api/user`);
       const data = await response.json();
       const { display_name, email } = data;
       return {
@@ -34,10 +36,10 @@ export const fetchUserData = createAsyncThunk(
 );
 
 export const updateWeatherAPI = createAsyncThunk(
-  '/api/weather',
+  `${serverUri}/api/weather`,
   async (_, { getState }) => {
     const body = JSON.stringify({ zip: getState().updater.zipcode });
-    const response = await fetch('/api/weather', {
+    const response = await fetch(`${serverUri}/api/weather`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
