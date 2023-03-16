@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchUserData } from '../redux/thunks';
-import Zipcode from './Zipcode';
-import UserBox from './UserBox';
-import Icon from './Icon';
-import Player from './Player';
-import Login from './Login';
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchUserData } from "../redux/thunks";
+import Zipcode from "./Zipcode";
+import UserBox from "./UserBox";
+import Icon from "./Icon";
+import Player from "./Player";
+import Login from "./Login";
 
 export default function Main() {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ export default function Main() {
 
   useEffect(() => {
     dispatch(fetchUserData());
-  }, []);
+  });
 
   return (
     <>

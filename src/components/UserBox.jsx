@@ -1,6 +1,6 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { updateUserAndEmail, updateToken } from '../redux/stateSlice';
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { updateUserAndEmail, updateToken } from "../redux/stateSlice";
 
 export default function UserBox() {
   const { userName, email } = useSelector((state) => state.updater);
