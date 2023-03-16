@@ -3,7 +3,11 @@ module.exports = {
     browser: true,
     es2021: true
   },
-  extends: 'standard',
+  extends: [
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+    'airbnb',
+  ],
   overrides: [
   ],
   parserOptions: {
@@ -11,5 +15,14 @@ module.exports = {
     sourceType: 'module'
   },
   rules: {
+    indent: ['error', 2],
+    quotes: ['error', 'single'],
+    semi: ['error', 'always']
+
+  },
+  settings: {
+    react: {
+      version: 'detect'
+    }
   }
-}
+};
